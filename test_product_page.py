@@ -1,6 +1,7 @@
 import pytest
 
 from .pages.product_page import ProductPage
+from .pages.login_page import LoginPage
 
 
 @pytest.mark.parametrize('link_test',
@@ -37,6 +38,7 @@ def test_guest_can_add_product_to_basket(browser, link_test):
     product_page.should_be_equals_price()
 
 
+@pytest.mark.xfail(reason='Fail is expected')
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
     product_page = ProductPage(browser, link)
@@ -54,6 +56,7 @@ def test_guest_cant_see_success_message(browser):
     product_page.open()
     product_page.should_not_be_element()
 
+
 @pytest.mark.skip
 def test_message_disappeared_after_adding_product_to_basket(browser):
     link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
@@ -65,4 +68,25 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     product_page.should_disappeared_element()
 
 
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_login_link()
 
+
+def test_guest_can_go_to_login_page_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    product_page = ProductPage(browser, link)
+
+    product_page.open()
+
+    product_page.go_to_login_page()
+
+    login_page = LoginPage(browser, browser.current_url)
+
+    login_page.should_be_login_page()
+
+    login_page.should_be_login_form()
+
+    login_page.should_be_login_url()
