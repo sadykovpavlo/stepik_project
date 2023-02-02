@@ -39,7 +39,8 @@ class BasePage:
             print("No second alert presented")
 
     def wait_visibility_of_element(self, how, what):
-        self.Wait(self.browser, self.timeout).until(self.EC.visibility_of_element_located(locator=(how, what)))
+        element = self.Wait(self.browser, self.timeout).until(self.EC.visibility_of_element_located(locator=(how, what)))
+        return element
 
     def wait_visibility_of_elements(self, how, what):
         self.Wait(self.browser, self.timeout).until(self.EC.visibility_of_all_elements_located(locator=(how, what)))

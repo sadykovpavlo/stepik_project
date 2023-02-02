@@ -20,9 +20,12 @@ class ProductPageLocator:
 
     BASKET_FIELD = (By.CSS_SELECTOR, '.col-sm-3.price_color')
 
-    PRICE_POPUP = (By.CSS_SELECTOR, '.alertinner p strong')
+    NAME_IN_POPUP = (By.CSS_SELECTOR, '.alert:nth-child(1) .alertinner > strong')
 
     VIEW_BASKET_BUTTON = (By.CSS_SELECTOR, 'span .btn-default:nth-child(1)')
+
+    PRICE_IN_POPUP = (By.CSS_SELECTOR, '.alertinner p strong')
+
 
 
 
