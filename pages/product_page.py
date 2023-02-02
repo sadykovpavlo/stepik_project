@@ -68,3 +68,13 @@ class ProductPage(BasePage):
         price_in_popup = self.get_price_in_popup()
         price_of_product = self.get_price_of_product()
         assert price_of_product == price_in_popup, 'Price not equals'
+
+    def should_not_be_element(self):
+        element = self.is_not_element_present(*ProductPageLocator.POPUP)
+        assert element, 'Element present on the page'
+
+    def should_disappeared_element(self):
+        element = self.is_disappeared(*ProductPageLocator.POPUP)
+        assert element, 'Element still present on the page'
+
+

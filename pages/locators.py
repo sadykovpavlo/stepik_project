@@ -26,6 +26,8 @@ class ProductPageLocator:
 
     PRICE_IN_POPUP = (By.CSS_SELECTOR, '.alertinner p strong')
 
+    POPUP = (By.CSS_SELECTOR, '#messages div:nth-child(1)')
+
 
 
 
