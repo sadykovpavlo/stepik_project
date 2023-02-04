@@ -70,3 +70,11 @@ class BasePage:
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
+    def go_to_basket_page(self):
+        basket_button = self.browser.find_element(*BasePageLocators.BASKET_BUTTON)
+        basket_button.click()
+
+    def should_be_busked_page(self):
+        basked_h1 = self.wait_visibility_of_element(*BasePageLocators.BASKET_H1)
+        assert basked_h1.text == 'Basket', 'No h1 element on basket page'
+
