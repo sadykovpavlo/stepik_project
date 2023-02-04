@@ -78,3 +78,7 @@ class BasePage:
         basked_h1 = self.wait_visibility_of_element(*BasePageLocators.BASKET_H1)
         assert basked_h1.text == 'Basket', 'No h1 element on basket page'
 
+    def should_be_account_icon(self):
+        account_icon = self.wait_visibility_of_element(*BasePageLocators.ACCOUNT_ICON)
+        assert account_icon, 'User not register'
+
